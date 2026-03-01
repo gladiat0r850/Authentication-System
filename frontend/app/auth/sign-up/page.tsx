@@ -10,7 +10,7 @@ export default function Home() {
     password: ''
   })
   async function Register(){
-    await XFetch('http://localhost:4500/sign-up', {
+    await XFetch('https://authentication-system-8.onrender.com/sign-up', {
       method: 'POST',
       body: JSON.stringify({...credentials, id: generateID()})
     })

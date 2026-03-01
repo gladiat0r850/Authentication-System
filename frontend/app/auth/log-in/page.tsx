@@ -12,7 +12,7 @@ const Page = () => {
     const router = useRouter()
     async function Log_in(){
         if(credentials.password && credentials.email){
-            const response = await XFetch('http://localhost:4500/log-in', {
+            const response = await XFetch('https://authentication-system-8.onrender.com/log-in', {
                 body: JSON.stringify({...credentials}),
                 method: 'POST'
             })

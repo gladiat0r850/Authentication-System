@@ -5,7 +5,7 @@ import { XFetch } from "@/utils/XFetch";
 export default function Home() {
   const {user, setUser} = useUser()
   async function signOut(){
-    await XFetch('http://localhost:4500/sign-out', {
+    await XFetch('https://authentication-system-8.onrender.com/sign-out', {
       method: 'POST'
     })
     setUser(null)
