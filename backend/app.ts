@@ -74,7 +74,7 @@ app.post('/log-in', async (req: AuthRequest, res: Response) => {
         if(!foundUser || !isTheSame){
             return res.status(404).json({message: 'Your password or email is wrong.'})
         }
-        const token = jwt.sign({id: foundUser.id} as object, 'blablabla', {expiresIn: '24h'})
+        const token = jwt.sign({id: foundUser.id} as object, process.env.JWT_SECRET!, {expiresIn: '24h'})
         res.cookie('token', token, {
             sameSite: 'lax',
             secure: false,
@@ -100,6 +100,6 @@ app.post('/sign-out', verifyToken, async (req: AuthRequest, res: Response) => {
         return res.status(500).json({message: "Yikes the server's ass got fucked bad..."})
     }
 })
-app.listen(4500, () => {
+app.listen(Number(process.env.PORT) || 4500, '0.0.0.0', () => {
     console.log('Running on 4500')
 })
