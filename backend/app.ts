@@ -15,7 +15,10 @@ app.use(cors({
     origin: 'http://localhost:3000',
     credentials: true
 }))
-mongoose.connect(process.env.DATABASE_NAME!)
+mongoose.connect(process.env.DATABASE_NAME!).catch((err) => {
+    console.error("MongoDB Connection Error:", err);
+    process.exit(1)
+  });
 const userSchema = new mongoose.Schema({
     name: String,
     password: String,
