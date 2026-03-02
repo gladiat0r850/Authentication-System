@@ -12,7 +12,7 @@ const app = express()
 app.use(cookieParser())
 app.use(express.json())
 app.use(cors({
-    origin: ['https://authentication-system-62ef.vercel.app/', 'http://localhost:3000'],
+    origin: ['https://authentication-system-62ef.vercel.app', 'http://localhost:3000'],
     credentials: true
 }))
 mongoose.connect(process.env.DATABASE_NAME!).catch((err) => {
@@ -79,8 +79,8 @@ app.post('/log-in', async (req: AuthRequest, res: Response) => {
         }
         const token = jwt.sign({id: foundUser.id} as object, process.env.JWT_SECRET!, {expiresIn: '24h'})
         res.cookie('token', token, {
-            sameSite: 'lax',
-            secure: false,
+            sameSite: 'none',
+            secure: true,
             httpOnly: true,
             maxAge: 24 * 60 * 60 * 1000
         })
@@ -94,8 +94,8 @@ app.post('/sign-out', verifyToken, async (req: AuthRequest, res: Response) => {
     try{
         const token = req.cookies.token
         res.clearCookie('token', {
-            sameSite: 'lax',
-            secure: false,
+            sameSite: 'none',
+            secure: true,
             httpOnly: true
         })
         return res.status(200).json({token})
