@@ -12,7 +12,7 @@ const app = express()
 app.use(cookieParser())
 app.use(express.json())
 app.use(cors({
-    origin: ['https://authentication-system-62ef.vercel.app', 'http://localhost:3000'],
+    origin: ['https://authentication-system-imz2.vercel.app', 'http://localhost:3000'],
     credentials: true
 }))
 mongoose.connect(process.env.DATABASE_NAME!).catch((err) => {
