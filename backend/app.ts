@@ -12,7 +12,7 @@ const app = express()
 app.use(cookieParser())
 app.use(express.json())
 app.use(cors({
-    origin: 'https://authentication-system-kwew.vercel.app',
+    origin: [process.env.FRONTEND_URL!, 'http://localhost:3000'],
     credentials: true
 }))
 mongoose.connect(process.env.DATABASE_NAME!).catch((err) => {
