@@ -13,9 +13,6 @@ app.use(cookieParser())
 app.use(express.json())
 app.use(cors({
     origin: function (origin, callback) {
-        // Allow if there's no origin (like mobile/Postman) 
-        // OR if it's localhost 
-        // OR if it ends with .vercel.app
         if (!origin || origin.includes('localhost') || origin.endsWith('.vercel.app')) {
             callback(null, true);
         } else {
