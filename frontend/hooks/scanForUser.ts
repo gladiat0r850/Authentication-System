@@ -9,7 +9,7 @@ export default function useUser(){
   useEffect(()  => {
     async function getUser(){
       try{
-      const response = await XFetch('https://authentication-system-9.onrender.com/verify-token', {
+      const response = await XFetch('https://authentication-system-4cka.onrender.com/verify-token', {
         method: 'GET'
       })
       const res = await response.json()
